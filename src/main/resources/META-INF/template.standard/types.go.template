@@ -1,0 +1,146 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ${go_package_name}
+
+import (
+	"bytes"
+	"errors"
+	"mosn.io/api"
+	"mosn.io/pkg/buffer"
+)
+
+// ${go_package_name} constants
+const (
+	ProtocolName         api.ProtocolName = "${go_package_name}" // protocol
+	CmdRequest           byte             = 1
+	CmdResponse          byte             = 2
+	CmdRequestHeartbeat  byte             = 3
+	CmdResponseHeartbeat byte             = 4
+
+	ResponseStatusSuccess                    uint32 = 0  // 0x00 response status
+	ResponseStatusError                      uint32 = 1  // 0x01
+	ResponseStatusServerException            uint32 = 2  // 0x02
+	ResponseStatusUnknown                    uint32 = 3  // 0x03
+	ResponseStatusServerThreadPoolBusy       uint32 = 4  // 0x04
+	ResponseStatusErrorComm                  uint32 = 5  // 0x05
+	ResponseStatusNoProcessor                uint32 = 6  // 0x06
+	ResponseStatusTimeout                    uint32 = 7  // 0x07
+	ResponseStatusClientSendError            uint32 = 8  // 0x08
+	ResponseStatusCodecException             uint32 = 9  // 0x09
+	ResponseStatusConnectionClosed           uint32 = 16 // 0x10
+	ResponseStatusServerSerialException      uint32 = 17 // 0x11
+	ResponseStatusServerDeserializeException uint32 = 18 // 0x12
+
+	UnKnownCmdType string = "unknown cmd flag"
+)
+
+var (
+	ErrUnKnownCmdType = errors.New(UnKnownCmdType)
+
+	RequestHeaderLen  int = getMinimumRequestLength()
+	ResponseHeaderLen int = getMinimumResponseLength()
+	LessLen           int = RequestHeaderLen // minimal length for decoding
+)
+
+func decodeHeader(bytes []byte, h *ProtocolHeader) (err error) {
+	if len(bytes) > 0 {
+
+		panic("实现: 解码协议头部")
+
+		// TODO: 删除panic以及以下注释，实现decodeHeader方法:
+		// 假设key/value待解码的格式： key=value&other_key=other_value&...=...
+
+		// str := string(bytes)
+		// items := strings.Split(str, "&")
+		// for _, item := range items {
+		//	 pair := strings.Split(item, "=")
+		//	 if len(pair) == 2 {
+		//		 h.Set(pair[0], pair[1])
+		//	 }
+		// }
+
+		// recover h.Changed
+		h.Changed = false
+	}
+	return nil
+}
+
+func encodeHeader(buf buffer.IoBuffer, h *ProtocolHeader) {
+	ioBuf := bytes.Buffer{}
+	h.Range(func(Key, Value string) bool {
+
+		panic("实现: 编码协议头部")
+
+		// TODO: 删除panic以及以下注释，实现encodeHeader方法:
+		// 假设key/value待编码的格式： key=value&other_key=other_value&...=...
+
+		// // 除第一个key=value之外都需要追加 &
+		// if ioBuf.Len() > 0 {
+		//	 ioBuf.WriteString("&")
+		// }
+		// // 写入临时变量ioBuf
+		// ioBuf.WriteString(Key)
+		// ioBuf.WriteString("=")
+		// ioBuf.WriteString(Value)
+
+		return true
+	})
+
+	// ioBuf变量刷新到编码buf
+	buf.WriteString(ioBuf.String())
+}
+
+func getEncodeHeaderLength(h *ProtocolHeader) uint32 {
+	panic("实现: 协议头部编码后的长度")
+
+	// TODO: 删除panic以及以下注释，实现getEncodeHeaderLength方法:
+	// 假设key/value编码后的格式： key=value&other_key=other_value&...=...
+	//
+	// total := int(h.ByteSize())     // 计算所有key、value的字节长度
+	// total += len(h.Header.Kvs) - 1 // 加上所有&符号长度
+	// total += len(h.Header.Kvs)     // 加上所有=符号长度
+	// return uint32(total)           // 返回最终编码后长度
+}
+
+func getMinimumRequestLength() int {
+	panic("实现: 请求协议头部最小长度，用于读取最小协议头部可以继续解码")
+
+	// TODO: 删除panic以及以下注释，实现getMinimumRequestLength方法:
+	// 假设协议头部最小长度16，即可从中计算出完整协议长度
+	// return 16
+}
+
+func getMinimumResponseLength() int {
+	panic("实现: 响应协议头部最小长度，用于读取最小协议头部可以继续解码")
+
+	// TODO: 删除panic以及以下注释，实现getMinimumResponseLength方法:
+	// 假设协议头部最小长度16，即可从中计算出完整协议长度
+	// return 16
+}
+
+func getStreamType(bytes []byte) byte {
+	panic("实现: 根据报文bytes返回请求类型")
+
+	// TODO: 删除panic以及以下注释，实现getStreamType方法:
+	// 如果是请求: 返回 CmdRequest
+	// 如果是响应: 返回 CmdResponse
+	// 如果是心跳请求: 返回 CmdRequestHeartbeat
+	// 如果是心跳响应: 返回 CmdResponseHeartbeat
+	// 如果不支持心跳，根据bytes返回CmdRequest或者CmdResponse
+	// 假设私有协议根据第3位值data.Bytes()[2]可以识别请求类型，返回对应上述值即可
+}

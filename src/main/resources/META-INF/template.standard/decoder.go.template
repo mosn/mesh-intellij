@@ -1,0 +1,192 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ${go_package_name}
+
+import (
+	"context"
+	"mosn.io/api"
+	"mosn.io/pkg/buffer"
+)
+
+func decodeRequest(ctx context.Context, data api.IoBuffer) (cmd interface{}, err error) {
+	bytesLen := data.Len()
+	bytes := data.Bytes()
+
+	// 1. 判断最小协议头部长度，是否可以计算出完整报文长度
+	if bytesLen < RequestHeaderLen {
+		return
+	}
+
+	var (
+		headerLen  uint16
+		contentLen uint16
+	)
+
+	// 2. 获取协议key-value的长度，以及报文体长度
+	panic("实现: 给headerLen和contentLen字段赋值, headerLen代表键值对编码长度，contentLen代表报文体长度")
+	// TODO: 删除panic以及以下注释，给headerLen和contentLen字段赋值:
+	// example 如何读取协议头部字段信息:
+	// 假设从索引12:14代表协议头部key-value编码后的长度,
+	// 从索引14:16读取协议体的长度
+	// headerLen = binary.BigEndian.Uint16(bytes[12:14])
+	// contentLen = binary.BigEndian.Uint16(bytes[14:16])
+
+	frameLen := RequestHeaderLen + int(headerLen) + int(contentLen)
+	if bytesLen < frameLen {
+		return
+	}
+	// 非常重要: 丢弃tcp连接解码后的数据，防止内核重复推送重复数据
+	data.Drain(frameLen)
+
+	request := &Request{}
+
+	request.ProtocolHeader = ProtocolHeader{
+		Flag:       getStreamType(bytes),
+		HeaderLen:  headerLen,
+		ContentLen: contentLen,
+		// TODO: 为RequestId和其他自定义字段赋值
+	}
+
+	panic("实现: 给Timeout字段赋值")
+	// TODO: 删除panic以及以下注释，给Timeout字段赋值:
+	// example 如何读取协议头部字段信息:
+	// 假设从索引8:12代表协议头部读取超时值，协议不携带超时，可以赋值默认超时，比如10秒
+	// request.Timeout = binary.BigEndian.Uint32(bytes[8:12])
+
+	request.Data = buffer.GetIoBuffer(frameLen)
+
+	//3. 完整报文复制到Data字段中
+	request.Data.Write(bytes[:frameLen])
+	request.rawData = request.Data.Bytes()
+
+	//5. process wrappers: Header, Content, Data
+	var (
+		headerIndex     int
+		headerEndIndex  int
+		contentIndex    int
+		contentEndIndex int
+	)
+
+	panic("实现: 给headerIndex和headerEndIndex赋值，headerIndex代表键值对开始下标，headerEndIndex代表键值对结束下标")
+	// TODO: 删除panic以及以下注释，给headerIndex和contentIndex赋值:
+	// example 假设RequestHeaderLen刚好是协议头部键值对的下标:
+	// headerIndex = RequestHeaderLen
+	// contentIndex 可以用headerIndex + 头部键值对长度标识结束下标
+	// headerEndIndex = headerIndex + int(headerLen)
+
+	if headerLen > 0 {
+		request.rawHeader = request.rawData[headerIndex:headerEndIndex]
+		err = decodeHeader(request.rawHeader, &request.ProtocolHeader)
+	}
+	if contentLen > 0 {
+		panic("实现: 给contentIndex和contentEndIndex赋值，contentIndex报文体开始下标，contentEndIndex代表报文体结束下标")
+		// TODO: 删除panic以及以下注释，给contentIndex和contentEndIndex赋值:
+		// example 假设协议报文体紧跟在键值对字节之后:
+		// contentIndex = headerEndIndex
+		// contentEndIndex 可以用contentIndex + 报文体长度标识结束下标
+		// contentEndIndex = contentIndex + int(contentLen)
+
+		request.rawContent = request.rawData[contentIndex:contentEndIndex]
+		request.Content = buffer.NewIoBufferBytes(request.rawContent)
+	}
+	return request, err
+}
+
+func decodeResponse(ctx context.Context, data api.IoBuffer) (cmd interface{}, err error) {
+	bytesLen := data.Len()
+	bytes := data.Bytes()
+
+	// 1. 判断最小协议头部长度，是否可以计算出完整报文长度
+	if bytesLen < ResponseHeaderLen {
+		return
+	}
+
+	var (
+		headerLen  uint16
+		contentLen uint16
+	)
+
+	// 2. 获取协议key-value的长度，以及报文体长度
+	panic("实现: 给headerLen和contentLen字段赋值, headerLen代表键值对编码长度，contentLen代表报文体长度")
+	// TODO: 删除panic以及以下注释，给headerLen和contentLen字段赋值:
+	// example 如何读取协议头部字段信息:
+	// 假设从索引12:14代表协议头部key-value编码后的长度,
+	// 从索引14:16读取协议体的长度
+	// headerLen = binary.BigEndian.Uint16(bytes[12:14])
+	// contentLen = binary.BigEndian.Uint16(bytes[14:16])
+
+	frameLen := ResponseHeaderLen + int(headerLen) + int(contentLen)
+	if bytesLen < frameLen {
+		return
+	}
+	// 非常重要: 丢弃tcp连接解码后的数据，防止内核重复推送重复数据
+	data.Drain(frameLen)
+
+	response := &Response{}
+
+	response.ProtocolHeader = ProtocolHeader{
+		Flag:       getStreamType(bytes),
+		HeaderLen:  headerLen,
+		ContentLen: contentLen,
+		// TODO: 为RequestId和其他自定义字段赋值
+	}
+
+	panic("实现: 给Status字段赋值")
+	// TODO: 删除panic以及以下注释，给Status字段赋值:
+	// example 如何读取协议头部字段信息:
+	// 假设从索引8:12代表协议头部读取返回状态值
+	// response.Status = binary.BigEndian.Uint32(bytes[8:12])
+
+	response.Data = buffer.GetIoBuffer(frameLen)
+
+	//3. 完整报文复制到Data字段中
+	response.Data.Write(bytes[:frameLen])
+	response.rawData = response.Data.Bytes()
+
+	//5. process wrappers: Header, Content, Data
+	var (
+		headerIndex     int
+		headerEndIndex  int
+		contentIndex    int
+		contentEndIndex int
+	)
+
+	panic("实现: 给headerIndex和headerEndIndex赋值，headerIndex代表键值对开始下标，headerEndIndex代表键值对结束下标")
+	// TODO: 删除panic以及以下注释，给headerIndex和contentIndex赋值:
+	// example 假设RequestHeaderLen刚好是协议头部键值对的下标:
+	// headerIndex = RequestHeaderLen
+	// contentIndex 可以用headerIndex + 头部键值对长度标识结束下标
+	// headerEndIndex = headerIndex + int(headerLen)
+
+	if headerLen > 0 {
+		response.rawHeader = response.rawData[headerIndex:headerEndIndex]
+		err = decodeHeader(response.rawHeader, &response.ProtocolHeader)
+	}
+	if contentLen > 0 {
+		panic("实现: 给contentIndex和contentEndIndex赋值，contentIndex报文体开始下标，contentEndIndex代表报文体结束下标")
+		// TODO: 删除panic以及以下注释，给contentIndex和contentEndIndex赋值:
+		// example 假设协议报文体紧跟在键值对字节之后:
+		// contentIndex = headerEndIndex
+		// contentEndIndex 可以用contentIndex + 报文体长度标识结束下标
+		// contentEndIndex = contentIndex + int(contentLen)
+
+		response.rawContent = response.rawData[contentIndex:contentEndIndex]
+		response.Content = buffer.NewIoBufferBytes(response.rawContent)
+	}
+	return response, err
+}

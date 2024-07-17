@@ -1,0 +1,121 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+
+    <!-- Unique id for this plugin. Must stay constant for the life of the plugin. -->
+    <id>io.mosn.coder.intellij</id>
+
+    <!-- Text to display as name on Preferences/Settings | Plugin page -->
+    <name>mosn mecha</name>
+
+    <!-- Requires the platform module to distinguish it from a legacy plugin -->
+    <depends>com.intellij.modules.go</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.go</depends>
+
+    <!-- Text to display as description on Preferences/Settings | Plugin page -->
+    <description>
+        <![CDATA[
+<p>Support for developing mosn plugin applications. Mosn mecha gives developers an easy and productive
+way to build and deploy cross-platform. <br><br>Adds <i>Mosn Plugin</i> to <b>File | New | Project...</b>
+<p> Some example plugin programs are provided:</p>
+<li>Demo program source code：<a href="https://github.com/mosn/extensions/tree/master/go-plugin">go plugin</a></li>
+
+    ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+      <ul>
+        <li><b>1.0.3</b> fix linux container start failed.</li>
+        <li><b>1.0.2</b> fix vs code fresh project.</li>
+        <li><b>1.0.1</b> support plugin deploy and upgrade.</li>
+        <li><b>0.0.3</b> support create mosn plugin project for vscode.</li>
+        <li><b>0.0.2</b> fix generate transcoder config.</li>
+        <li><b>0.0.1</b> support create mosn plugin project for goland.</li>
+      </ul>
+    ]]>
+    </change-notes>
+
+    <vendor url="https://github.com/zonghaishang" email="yiji@apache.org">诣极 yì jí</vendor>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <moduleBuilder builderClass="io.mosn.coder.intellij.GoModuleBuilder"/>
+        <directoryProjectGenerator implementation="io.mosn.coder.intellij.GoProjectGenerator"/>
+
+        <!--        <toolWindow id="GoPluginConsole" anchor="bottom" factoryClass="io.mosn.coder.console.PluginConsolePanelToolBarFactory"/>-->
+    </extensions>
+
+    <actions>
+        <action id="io.mosn.coder.intellij.action.GoCreatePluginAction"
+                class="io.mosn.coder.intellij.action.GoCreatePluginAction" text="Mosn Plugin"
+                description="create mosn extension plugin"
+                icon="io.mosn.coder.intellij.util.Icons.MODULE_ICON">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="Go.NewGoFile"/>
+        </action>
+
+        <group id="io.mosn.coder.intellij.action.PluginDefaultActionGroup"
+               class="io.mosn.coder.intellij.action.PluginDefaultActionGroup"
+               text="Mosn Go Plugin" popup="true"
+               icon="io.mosn.coder.intellij.util.Icons.MODULE_ICON">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="before" relative-to-action="AddToFavorites"/>
+
+            <action id="io.mosn.coder.intellij.action.MiniMeshStartAction"
+                    class="io.mosn.coder.intellij.action.MiniMeshStartAction" text="MiniMesh"
+                    description="MiniMesh">
+                <keyboard-shortcut first-keystroke="meta control alt M" keymap="$default"/>
+            </action>
+
+            <separator/>
+            <action id="io.mosn.coder.intellij.action.CompilePluginAction"
+                    class="io.mosn.coder.intellij.action.CompilePluginAction" text="Compile"
+                    description="Compile">
+                <keyboard-shortcut first-keystroke="meta control alt B" keymap="$default"/>
+            </action>
+
+            <action id="io.mosn.coder.intellij.action.PackageGoPluginAction"
+                    class="io.mosn.coder.intellij.action.PackagePluginAction" text="Package"
+                    description="Package">
+                <keyboard-shortcut first-keystroke="meta control alt P" keymap="$default"/>
+            </action>
+
+            <separator/>
+            <action id="io.mosn.coder.intellij.action.DebugMosnAction"
+                    class="io.mosn.coder.intellij.action.DebugMosnAction" text="Launch Mosn"
+                    description="Launch">
+                <keyboard-shortcut first-keystroke="meta control alt L" keymap="$default"/>
+            </action>
+            <action id="io.mosn.coder.intellij.action.StopMosnAction"
+                    class="io.mosn.coder.intellij.action.StopMosnAction" text="Stop Mosn"
+                    description="Stop">
+                <keyboard-shortcut first-keystroke="meta control alt H" keymap="$default"/>
+            </action>
+
+            <separator/>
+            <action id="io.mosn.coder.intellij.action.DeployGoPluginAction"
+                    class="io.mosn.coder.intellij.action.DeployPluginAction" text="Deploy"
+                    description="Deploy">
+                <keyboard-shortcut first-keystroke="meta control alt D" keymap="$default"/>
+            </action>
+            <action id="io.mosn.coder.intellij.action.UpgradePluginAction"
+                    class="io.mosn.coder.intellij.action.UpgradePluginAction" text="Upgrade"
+                    description="Upgrade">
+                <keyboard-shortcut first-keystroke="meta control alt U" keymap="$default"/>
+            </action>
+            <separator/>
+            <action id="io.mosn.coder.intellij.action.RefreshProjectAction"
+                    class="io.mosn.coder.intellij.action.RefreshProjectAction" text="Refresh"
+                    description="Refresh">
+                <keyboard-shortcut first-keystroke="meta control alt F" keymap="$default"/>
+            </action>
+        </group>
+
+        <action id="io.mosn.coder.intellij.action.DebugMosnGroupAction"
+                class="io.mosn.coder.intellij.action.DebugMosnAction" text="Launch Mosn"
+                description="Launch Mosn">
+            <add-to-group group-id="EditorPopupMenuDebug" anchor="last"/>
+            <keyboard-shortcut first-keystroke="meta control alt L" keymap="$default"/>
+        </action>
+
+    </actions>
+
+</idea-plugin>

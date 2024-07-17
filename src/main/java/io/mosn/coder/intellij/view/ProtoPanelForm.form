@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="io.mosn.coder.intellij.view.ProtoPanelForm">
+  <grid id="27dc6" binding="content" layout-manager="GridLayoutManager" row-count="14" column-count="17" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1082" height="721"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="15bfd" class="javax.swing.JTextField" binding="protoField">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="16" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <toolTipText value="创建mosn插件名称, 全小写字母，用来编译/打包名称，eg: make codec|filter|trans plugin=插件名称"/>
+        </properties>
+      </component>
+      <component id="2071f" class="javax.swing.JLabel" binding="pluginNameField">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Plugin Name:"/>
+        </properties>
+      </component>
+      <component id="d1720" class="javax.swing.JLabel" binding="serverPortLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Server Port:"/>
+        </properties>
+      </component>
+      <component id="2e318" class="javax.swing.JLabel" binding="clientPortLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Client Port:"/>
+        </properties>
+      </component>
+      <component id="7a4a9" class="javax.swing.JTextField" binding="clientPortField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+          <toolTipText value="客户端mosn监听端口, 处理本地客户端app流量"/>
+        </properties>
+      </component>
+      <component id="7bc28" class="javax.swing.JTextField" binding="serverPortField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+          <toolTipText value="服务端mosn监听端口，处理远端请求流量"/>
+        </properties>
+      </component>
+      <component id="100a7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Plugin Type:"/>
+        </properties>
+      </component>
+      <component id="c1836" class="javax.swing.JComboBox" binding="pluginTypeField">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <model/>
+        </properties>
+      </component>
+      <component id="863a" class="javax.swing.JCheckBox" binding="httpField">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <text value="http"/>
+        </properties>
+      </component>
+      <component id="60062" class="javax.swing.JCheckBox" binding="boltCheckBox" default-binding="true">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="bolt"/>
+        </properties>
+      </component>
+      <component id="b5552" class="javax.swing.JLabel" binding="generateCodeLabel">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="9" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=" Generate standard protocol code"/>
+        </properties>
+      </component>
+      <hspacer id="a8ca3">
+        <constraints>
+          <grid row="4" column="8" row-span="1" col-span="9" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="459f6">
+        <constraints>
+          <grid row="3" column="12" row-span="1" col-span="5" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="9e984" class="javax.swing.JLabel" binding="filterField">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Apply Side:"/>
+        </properties>
+      </component>
+      <component id="fb9b8" class="javax.swing.JCheckBox" binding="filterClientCheckBox">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="client"/>
+        </properties>
+      </component>
+      <component id="ef708" class="javax.swing.JCheckBox" binding="filterServerCheckBox">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="server"/>
+        </properties>
+      </component>
+      <component id="12fa8" class="javax.swing.JLabel" binding="transField">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Apply Side:"/>
+        </properties>
+      </component>
+      <component id="b76ab" class="javax.swing.JCheckBox" binding="transClientCheckBox">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="client"/>
+        </properties>
+      </component>
+      <component id="ef283" class="javax.swing.JCheckBox" binding="transServerCheckBox">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="server"/>
+        </properties>
+      </component>
+      <component id="3b8aa" class="javax.swing.JLabel" binding="serviceKeyLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Service Key:"/>
+        </properties>
+      </component>
+      <component id="c06da" class="javax.swing.JTextField" binding="serviceKeyField">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="16" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+          <toolTipText value="服务标识: 用于从请求中提取该字段用于组成dataId，支持服务调用、服务粒度限流、熔断、降级、故障注入、故障隔离能力"/>
+        </properties>
+      </component>
+      <component id="b2fb1" class="javax.swing.JLabel" binding="orgLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Organization:"/>
+        </properties>
+      </component>
+      <component id="4844c" class="javax.swing.JTextField" binding="orgField">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="16" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+          <toolTipText value="go.mod模块名前缀，和插件名构成完整模块名。填写示例：github.com/zonghaishang"/>
+        </properties>
+      </component>
+      <grid id="eac46" binding="govPanel" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="17" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="8e36" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Service Method Key:"/>
+            </properties>
+          </component>
+          <component id="47ebd" class="javax.swing.JTextField" binding="serviceMethodField">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="服务方法标识：用于从请求中提取该字段用于组成调用方法名称，支持方法级别粒度限流、熔断、降级、故障注入、故障隔离能力"/>
+            </properties>
+          </component>
+          <component id="746a4" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Service Trace Key:"/>
+            </properties>
+          </component>
+          <component id="d778" class="javax.swing.JTextField" binding="serviceTraceField">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="服务trace标识：用于从请求中提取该字段用于组成链路trace唯一标识"/>
+            </properties>
+          </component>
+          <component id="c0f9a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Service Span Key:"/>
+            </properties>
+          </component>
+          <component id="9511a" class="javax.swing.JTextField" binding="serviceSpanField">
+            <constraints>
+              <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="服务span标识：用于从请求中提取该字段用于组成链路span调用顺序信息"/>
+            </properties>
+          </component>
+          <component id="b55b" class="javax.swing.JTextField" binding="serviceCallerAppFiled">
+            <constraints>
+              <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="服务调用方app标识：用于从请求中提取该字段用于组成调用方app名称，支持方法级别粒度限流、熔断、降级、故障注入、故障隔离能力"/>
+            </properties>
+          </component>
+          <component id="3040" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Service Caller App Key:"/>
+            </properties>
+          </component>
+          <component id="13250" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Service Governance capability ( Optional )"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="eb40c">
+        <constraints>
+          <grid row="13" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="d762" layout-manager="GridLayoutManager" row-count="3" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="10" bottom="10" right="10"/>
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="17" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="2596a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Mosn Api Version:"/>
+            </properties>
+          </component>
+          <component id="32b5e" class="javax.swing.JTextField" binding="apiFiled">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="插件依赖api的版本"/>
+            </properties>
+          </component>
+          <component id="2e66" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Mosn Package Version:"/>
+            </properties>
+          </component>
+          <component id="4f8c" class="javax.swing.JTextField" binding="packageField">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <toolTipText value="插件依赖pkg的版本"/>
+            </properties>
+          </component>
+          <component id="b34cc" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Plugin Dependencies ( Optional )"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="cc7d7" class="javax.swing.JLabel" binding="poolModelLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Pool Mode:"/>
+        </properties>
+      </component>
+      <component id="d626" class="javax.swing.JComboBox" binding="poolModelField">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="8640e" class="javax.swing.JCheckBox" binding="requestIdIsStringCheckBox" default-binding="true">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="7" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="request id is string type"/>
+        </properties>
+      </component>
+      <component id="a05d" class="javax.swing.JLabel" binding="codecTypeLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Codec Type:"/>
+        </properties>
+      </component>
+      <component id="2f2a1" class="javax.swing.JComboBox" binding="codecTypeField">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="ebf48" class="javax.swing.JLabel" binding="codecLengthLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Fixed Length:"/>
+        </properties>
+      </component>
+      <component id="1a0a8" class="javax.swing.JSpinner" binding="codecSpinnerField">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <hspacer id="dc463">
+        <constraints>
+          <grid row="6" column="8" row-span="1" col-span="9" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="db2fb" class="javax.swing.JCheckBox" binding="dubboCheckBox" default-binding="true">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="dubbo"/>
+        </properties>
+      </component>
+      <component id="d2e6d" class="javax.swing.JCheckBox" binding="springCloudCheckBox" default-binding="true">
+        <constraints>
+          <grid row="4" column="5" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="spring cloud"/>
+        </properties>
+      </component>
+      <component id="cd48d" class="javax.swing.JLabel" binding="codecPrefixLabel">
+        <constraints>
+          <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Append Prefix:"/>
+        </properties>
+      </component>
+      <component id="3411c" class="javax.swing.JTextField" binding="codecPrefixField">
+        <constraints>
+          <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="1af9b" class="com.intellij.ui.components.labels.LinkLabel" binding="urlLabel">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="4"/>
+          <text value="plugin development help guide"/>
+        </properties>
+      </component>
+      <component id="4cb52" class="javax.swing.JCheckBox" binding="injectHeadCheckBox" default-binding="true">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="inject head"/>
+        </properties>
+      </component>
+      <component id="4efcf" class="javax.swing.JLabel" binding="dstProtocolLabel">
+        <constraints>
+          <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Dst Protocol:"/>
+        </properties>
+      </component>
+      <component id="89997" class="javax.swing.JComboBox" binding="srcProtocolField">
+        <constraints>
+          <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="dubbo"/>
+            <item value="bolt"/>
+            <item value="springcloud"/>
+          </model>
+        </properties>
+      </component>
+      <component id="29ef" class="javax.swing.JLabel" binding="srcProtocolLabel">
+        <constraints>
+          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Src Protocol:"/>
+        </properties>
+      </component>
+      <hspacer id="9abfc">
+        <constraints>
+          <grid row="8" column="8" row-span="1" col-span="9" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="a9b45" class="javax.swing.JComboBox" binding="dstProtocolField">
+        <constraints>
+          <grid row="8" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="springcloud"/>
+            <item value="dubbo"/>
+            <item value="bolt"/>
+          </model>
+        </properties>
+      </component>
+      <component id="b8cec" class="javax.swing.JLabel" binding="transSplitLabel">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="    |    "/>
+        </properties>
+      </component>
+      <component id="3bbba" class="javax.swing.JLabel" binding="traceTypeLabel">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Trace Type:"/>
+        </properties>
+      </component>
+      <component id="e37f8" class="javax.swing.JComboBox" binding="traceTypeField">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="sky-walking"/>
+            <item value="zipkin"/>
+          </model>
+        </properties>
+      </component>
+      <component id="2a112" class="javax.swing.JLabel" binding="reporterLabel">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Reporter:"/>
+        </properties>
+      </component>
+      <component id="62089" class="javax.swing.JComboBox" binding="reporterField">
+        <constraints>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="protoGroup">
+      <member id="5cdd8"/>
+    </group>
+    <group name="transGroup">
+      <member id="b76ab"/>
+      <member id="ef283"/>
+    </group>
+  </buttonGroups>
+</form>

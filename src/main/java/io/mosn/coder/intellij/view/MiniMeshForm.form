@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="io.mosn.coder.intellij.view.MiniMeshForm">
+  <grid id="27dc6" binding="rootContent" layout-manager="GridLayoutManager" row-count="4" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1141" height="1459"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="b177c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="minimesh directory:"/>
+        </properties>
+      </component>
+      <component id="2244c" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="bundleChooser">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="5" vsize-policy="2" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="520" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="94856" class="javax.swing.JLabel" binding="configFileLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="deploy config file:"/>
+          <visible value="true"/>
+        </properties>
+      </component>
+      <scrollpane id="c743b" binding="infoPanel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="10" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="360"/>
+          </grid>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a05b6" class="javax.swing.JTextArea" binding="infoTextArea">
+            <constraints/>
+            <properties>
+              <editable value="false"/>
+              <lineWrap value="true"/>
+              <margin top="10" left="10" bottom="5" right="10"/>
+              <minimumSize width="1137" height="480"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="2b30f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="kubernate version:"/>
+        </properties>
+      </component>
+      <component id="6c61c" class="javax.swing.JComboBox" binding="k8sversionCombox">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="v1.26.0"/>
+            <item value="v1.23.8"/>
+            <item value="v1.23.0"/>
+            <item value="v1.22.0"/>
+            <item value="v1.21.0"/>
+            <item value="v1.20.0"/>
+            <item value="v1.19.4"/>
+          </model>
+        </properties>
+      </component>
+      <component id="95cc2" class="javax.swing.JLabel" binding="cpuLabel">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="cpu:"/>
+        </properties>
+      </component>
+      <component id="bb264" class="javax.swing.JComboBox" binding="cpuCombox">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="max"/>
+            <item value="2c"/>
+            <item value="4c"/>
+            <item value="8c"/>
+            <item value="16c"/>
+            <item value="32c"/>
+          </model>
+        </properties>
+      </component>
+      <component id="ef22b" class="javax.swing.JLabel" binding="memLabel">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="mem(g):"/>
+        </properties>
+      </component>
+      <component id="881a5" class="javax.swing.JComboBox" binding="memCombox">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="max"/>
+            <item value="2g"/>
+            <item value="4g"/>
+            <item value="8g"/>
+            <item value="16g"/>
+          </model>
+        </properties>
+      </component>
+      <component id="fcbf" class="javax.swing.JLabel" binding="diskLabel">
+        <constraints>
+          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="disk(g):"/>
+        </properties>
+      </component>
+      <component id="289ce" class="javax.swing.JComboBox" binding="diskCombox">
+        <constraints>
+          <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <model>
+            <item value="60g"/>
+            <item value="90g"/>
+            <item value="120g"/>
+            <item value="150g"/>
+          </model>
+        </properties>
+      </component>
+      <component id="60873" class="javax.swing.JCheckBox" binding="customConfigurationCheckBox" default-binding="true">
+        <constraints>
+          <grid row="0" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="custom deploy config"/>
+        </properties>
+      </component>
+      <component id="b73e7" class="io.mosn.coder.intellij.view.MiniConfigBrowseButton" binding="miniConfigTextFieldWithBrowseButton1" custom-create="true" default-binding="true">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="82d2d" class="com.intellij.openapi.ui.ComboBox" binding="comboBox1" custom-create="true">
+        <constraints>
+          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="d0bf0" class="javax.swing.JLabel" binding="componentLabel">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="deploy: "/>
+        </properties>
+      </component>
+      <component id="50051" class="javax.swing.JCheckBox" binding="debugCheckBox" default-binding="true">
+        <constraints>
+          <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="debug"/>
+        </properties>
+      </component>
+      <component id="b1ae5" class="javax.swing.JCheckBox" binding="keepStartCheckBox" default-binding="true">
+        <constraints>
+          <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="keep start"/>
+          <toolTipText value="Please make sure the cluster is started"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
